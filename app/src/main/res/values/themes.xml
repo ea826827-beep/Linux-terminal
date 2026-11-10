@@ -1,0 +1,33 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+
+    <!-- Base Theme -->
+    <style name="Theme.KaliMobile" parent="Theme.AppCompat.Light.NoActionBar">
+        <item name="colorPrimary">#00FFEF</item>
+        <item name="colorPrimaryDark">#00BFFF</item>
+        <item name="colorAccent">#00FFEF</item>
+        <item name="android:windowBackground">#0D0D0D</item>
+        <item name="android:textColorPrimary">#FFFFFF</item>
+        <item name="android:textColorSecondary">#CCCCCC</item>
+    </style>
+
+    <!-- Dark Theme for Terminal and Tools -->
+    <style name="Theme.KaliMobile.Dark" parent="Theme.AppCompat.NoActionBar">
+        <item name="colorPrimary">#00FFEF</item>
+        <item name="colorPrimaryDark">#00BFFF</item>
+        <item name="colorAccent">#00FFEF</item>
+        <item name="android:windowBackground">#0D0D0D</item>
+        <item name="android:textColorPrimary">#FFFFFF</item>
+        <item name="android:textColorSecondary">#CCCCCC</item>
+    </style>
+
+    <!-- Settings Theme -->
+    <style name="Theme.KaliMobile.Settings" parent="Theme.AppCompat.NoActionBar">
+        <item name="colorPrimary">#00FFEF</item>
+        <item name="colorPrimaryDark">#00BFFF</item>
+        <item name="colorAccent">#00FFEF</item>
+        <item name="android:windowBackground">#0D0D0D</item>
+        <item name="android:textColorPrimary">#FFFFFF</item>
+        <item name="android:textColorSecondary">#CCCCCC</item>
+    </style>
+
+</resources>

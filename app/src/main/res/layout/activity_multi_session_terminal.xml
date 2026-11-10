@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#0D0D0D"
+    android:orientation="vertical">
+
+    <!-- Session Control Bar -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="52dp"
+        android:background="#1A1A2E"
+        android:orientation="horizontal"
+        android:padding="4dp">
+
+        <Spinner
+            android:id="@+id/sessionSpinner"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="#2A2A3E"
+            android:paddingStart="8dp"
+            android:paddingEnd="4dp"
+            android:popupBackground="#1A1A2E"/>
+
+        <ImageButton
+            android:id="@+id/btnNewSession"
+            android:layout_width="48dp"
+            android:layout_height="match_parent"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:contentDescription="New Session"
+            android:src="@drawable/ic_add"
+            android:tint="#00FFEF"/>
+
+        <ImageButton
+            android:id="@+id/btnCloseSession"
+            android:layout_width="48dp"
+            android:layout_height="match_parent"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:contentDescription="Close Session"
+            android:src="@drawable/ic_close"
+            android:tint="#FF5555"/>
+
+        <ImageButton
+            android:id="@+id/btnRenameSession"
+            android:layout_width="48dp"
+            android:layout_height="match_parent"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:contentDescription="Rename Session"
+            android:src="@drawable/ic_edit"
+            android:tint="#FFD700"/>
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#333333"/>
+
+    <!-- Terminal Output -->
+    <ScrollView
+        android:id="@+id/terminalScroll"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:background="#0D0D0D"
+        android:padding="16dp"
+        android:scrollbarStyle="outsideOverlay">
+
+        <TextView
+            android:id="@+id/terminalOutput"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColor="#00FF41"
+            android:textSize="14sp"
+            android:typeface="monospace"
+            android:lineSpacingExtra="2dp"/>
+    </ScrollView>
+
+    <!-- Input Bar -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:background="#16161E"
+        android:orientation="horizontal"
+        android:padding="8dp">
+
+        <EditText
+            android:id="@+id/terminalInput"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="#2A2A3E"
+            android:hint="kali-mobile:~$ "
+            android:hintColor="#888888"
+            android:imeOptions="actionSend"
+            android:inputType="text"
+            android:maxLines="1"
+            android:padding="12dp"
+            android:textColor="#FFFFFF"
+            android:textColorHint="#888888"
+            android:textSize="15sp"
+            android:typeface="monospace"/>
+
+        <ImageButton
+            android:id="@+id/btnSend"
+            android:layout_width="48dp"
+            android:layout_height="match_parent"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:contentDescription="Send"
+            android:src="@drawable/ic_send"
+            android:tint="#00FFEF"/>
+
+        <ImageButton
+            android:id="@+id/btnClear"
+            android:layout_width="48dp"
+            android:layout_height="match_parent"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:contentDescription="Clear"
+            android:src="@drawable/ic_clear"
+            android:tint="#888888"/>
+    </LinearLayout>
+</LinearLayout>

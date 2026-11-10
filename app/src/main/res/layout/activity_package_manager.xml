@@ -1,0 +1,209 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#0D0D0D">
+
+    <!-- Top toolbar -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:background="#1A1A2E"
+        android:orientation="horizontal"
+        android:padding="8dp">
+
+        <ImageView
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:src="@android:drawable/ic_menu_info_details"
+            android:contentDescription="Package manager info"/>
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="KALI PACKAGE MANAGER"
+            android:textColor="#00FFEF"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:typeface="monospace"
+            android:gravity="center_vertical"/>
+
+        <TextView
+            android:id="@+id/pkgStatusText"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="Kali: Not ready"
+            android:textColor="#FF5555"
+            android:textSize="12sp"
+            android:typeface="monospace"
+            android:gravity="center_vertical"
+            android:paddingStart="8dp"/>
+    </LinearLayout>
+
+    <!-- Action buttons row -->
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:fillViewport="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="8dp">
+
+            <Button
+                android:id="@+id/btnAptUpdate"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="apt update"
+                android:textColor="#0D0D0D"
+                android:background="#00FFEF"
+                android:textStyle="bold"
+                android:padding="8dp"
+                android:layout_marginEnd="4dp"/>
+
+            <Button
+                android:id="@+id/btnAptUpgrade"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="apt upgrade"
+                android:textColor="#0D0D0D"
+                android:background="#00FFEF"
+                android:textStyle="bold"
+                android:padding="8dp"
+                android:layout_marginStart="4dp"
+                android:layout_marginEnd="4dp"/>
+
+            <Button
+                android:id="@+id/btnListInstalled"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Installed"
+                android:textColor="#00FFEF"
+                android:background="#1A1A2E"
+                android:padding="8dp"
+                android:layout_marginStart="4dp"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:padding="8dp">
+
+            <Button
+                android:id="@+id/btnEssentialTools"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Essential Tools"
+                android:textColor="#00FFEF"
+                android:background="#1A1A2E"
+                android:padding="8dp"
+                android:layout_marginEnd="4dp"/>
+
+            <Button
+                android:id="@+id/btnPkgSearch"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Search"
+                android:textColor="#00FFEF"
+                android:background="#1A1A2E"
+                android:padding="8dp"
+                android:layout_marginStart="4dp"
+                android:layout_marginEnd="4dp"/>
+
+            <Button
+                android:id="@+id/btnAptInstall"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Install"
+                android:textColor="#00FFEF"
+                android:background="#1A1A2E"
+                android:padding="8dp"
+                android:layout_marginStart="4dp"/>
+        </LinearLayout>
+    </ScrollView>
+
+    <!-- Input section -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="8dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Package Operations"
+            android:textColor="#888888"
+            android:textSize="12sp"
+            android:textStyle="italic"
+            android:layout_marginBottom="4dp"/>
+
+        <EditText
+            android:id="@+id/pkgInstallEdit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Package name to install (e.g. python3, git, nano)"
+            android:textColor="#00FFEF"
+            android:textColorHint="#666666"
+            android:textSize="14sp"
+            android:typeface="monospace"
+            android:background="#16161E"
+            android:padding="10dp"
+            android:layout_marginBottom="4dp"/>
+
+        <EditText
+            android:id="@+id/pkgSearchEdit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Search packages (e.g. python, security, web)"
+            android:textColor="#00FFEF"
+            android:textColorHint="#666666"
+            android:textSize="14sp"
+            android:typeface="monospace"
+            android:background="#16161E"
+            android:padding="10dp"/>
+    </LinearLayout>
+
+    <!-- Progress bar -->
+    <ProgressBar
+        android:id="@+id/pkgProgressBar"
+        android:layout_width="match_parent"
+        android:layout_height="4dp"
+        android:indeterminate="true"
+        android:visibility="gone"
+        android:progressTint="#00FFEF"/>
+
+    <!-- Output panel -->
+    <ScrollView
+        android:id="@+id/pkgScrollView"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:fillViewport="true"
+        android:scrollbarStyle="outsideInset">
+
+        <TextView
+            android:id="@+id/pkgOutputText"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#000000"
+            android:textColor="#00FF41"
+            android:textSize="13sp"
+            android:typeface="monospace"
+            android:padding="12dp"
+            android:textIsSelectable="true"
+            android:textCursorDrawable="@null"/>
+    </ScrollView>
+
+</LinearLayout>

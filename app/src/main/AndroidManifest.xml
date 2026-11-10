@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.kali.mobile">
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="KALI MOBILE"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.KaliMobile">
+
+        <!-- Dashboard (Launcher) -->
+        <activity
+            android:name=".DashboardActivity"
+            android:exported="true"
+            android:label="KALI MOBILE"
+            android:theme="@style/Theme.KaliMobile">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN"/>
+                <category android:name="android.intent.category.LAUNCHER"/>
+            </intent-filter>
+        </activity>
+
+        <!-- MainActivity kept for compatibility -->
+        <activity
+            android:name=".MainActivity"
+            android:exported="false"
+            android:label="KALI MOBILE"
+            android:theme="@style/Theme.KaliMobile"/>
+
+        <activity
+            android:name=".MultiSessionTerminalActivity"
+            android:exported="false"
+            android:label="KALI TERMINAL"
+            android:theme="@style/Theme.KaliMobile.Dark"
+            android:windowSoftInputMode="adjustResize"/>
+
+        <activity
+            android:name=".TerminalActivity"
+            android:exported="false"
+            android:label="KALI TERMINAL (LEGACY)"
+            android:theme="@style/Theme.KaliMobile.Dark"/>
+
+        <activity
+            android:name=".FileManagerActivity"
+            android:exported="false"
+            android:label="KALI FILE MANAGER"
+            android:theme="@style/Theme.KaliMobile.Dark"/>
+
+        <activity
+            android:name=".SettingsActivity"
+            android:exported="false"
+            android:label="KALI MOBILE SETTINGS"
+            android:theme="@style/Theme.KaliMobile.Settings"/>
+
+        <activity
+            android:name=".InstallationActivity"
+            android:exported="false"
+            android:label="KALI LINUX INSTALLATION"
+            android:theme="@style/Theme.KaliMobile.Dark"/>
+
+        <activity
+            android:name=".PackageManagerActivity"
+            android:exported="false"
+            android:label="KALI PACKAGE MANAGER"
+            android:theme="@style/Theme.KaliMobile.Dark"/>
+
+        <activity
+            android:name=".PythonActivity"
+            android:exported="false"
+            android:label="KALI PYTHON"
+            android:theme="@style/Theme.KaliMobile.Dark"/>
+
+        <activity
+            android:name=".GitActivity"
+            android:exported="false"
+            android:label="KALI GIT"
+            android:theme="@style/Theme.KaliMobile.Dark"/>
+    </application>
+
+    <!-- Permissions for storage access -->
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.MANAGE_EXTERNAL_STORAGE"/>
+
+    <!-- Permission for running shell commands -->
+    <uses-permission android:name="android.permission.EXECUTE_SHELL_COMMAND"/>
+
+    <!-- Network permission for downloading Kali rootfs -->
+    <uses-permission android:name="android.permission.INTERNET"/>
+
+    <!-- Minimum and target SDK -->
+    <uses-sdk
+        android:minSdk="24"
+        android:targetSdk="34"/>
+
+</manifest>

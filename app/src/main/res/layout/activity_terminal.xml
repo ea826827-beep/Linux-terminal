@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#0D0D0D">
+
+    <!-- Terminal output area - scrollable -->
+    <ScrollView
+        android:id="@+id/terminalScroll"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_above="@+id/inputContainer"
+        android:layout_below="@+id/toolbar"
+        android:fillViewport="true"
+        android:scrollbarStyle="outsideInset">
+
+        <TextView
+            android:id="@+id/terminalOutput"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#000000"
+            android:textColor="#00FF41"
+            android:textSize="14sp"
+            android:typeface="monospace"
+            android:padding="12dp"
+            android:textIsSelectable="true"
+            android:textCursorDrawable="@null"/>
+    </ScrollView>
+
+    <!-- Input container -->
+    <LinearLayout
+        android:id="@+id/inputContainer"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:layout_alignParentBottom="true"
+        android:background="#1A1A2E"
+        android:orientation="horizontal"
+        android:padding="4dp">
+
+        <EditText
+            android:id="@+id/terminalInput"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:background="@android:color/transparent"
+            android:textColor="#00FFEF"
+            android:textColorHint="#666666"
+            android:hint="kali-mobile:~$ "
+            android:textSize="14sp"
+            android:typeface="monospace"
+            android:imeOptions="actionSend"
+            android:inputType="text"
+            android:paddingStart="8dp"
+            android:paddingEnd="8dp"/>
+
+        <ImageButton
+            android:id="@+id/btnSend"
+            android:layout_width="48dp"
+            android:layout_height="match_parent"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:src="@android:drawable/ic_menu_send"
+            android:contentDescription="Send command"
+            android:tint="#00FFEF"/>
+
+        <ImageButton
+            android:id="@+id/btnClear"
+            android:layout_width="48dp"
+            android:layout_height="match_parent"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:src="@android:drawable/ic_menu_delete"
+            android:contentDescription="Clear terminal"
+            android:tint="#FF5555"/>
+    </LinearLayout>
+
+    <!-- Top toolbar -->
+    <LinearLayout
+        android:id="@+id/toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:layout_alignParentTop="true"
+        android:background="#1A1A2E"
+        android:orientation="horizontal"
+        android:padding="8dp">
+
+        <ImageView
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:src="@android:drawable/ic_menu_info_details"
+            android:contentDescription="Terminal info"/>
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:text="KALI MOBILE TERMINAL"
+            android:textColor="#00FFEF"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:typeface="monospace"
+            android:gravity="center_vertical"/>
+
+        <ImageView
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:src="@android:drawable/ic_menu_close_clear_cancel"
+            android:contentDescription="Close terminal"/>
+    </LinearLayout>
+
+</RelativeLayout>
