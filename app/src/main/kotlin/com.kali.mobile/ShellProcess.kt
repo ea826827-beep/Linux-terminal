@@ -41,11 +41,9 @@ class ShellProcess {
 
             // Start error stream reader to avoid buffer blocking
             Thread {
-                errorReader!!.use { err ->
-                    err.bufferedReader().useLines { lines ->
-                        lines.forEach { line ->
-                            Log.e("ShellProcess", "Shell stderr: $line")
-                        }
+                errorReader!!.useLines { lines ->
+                    lines.forEach { line ->
+                        Log.e("ShellProcess", "Shell stderr: $line")
                     }
                 }
             }.start()

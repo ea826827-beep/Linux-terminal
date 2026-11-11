@@ -90,9 +90,4 @@
     <!-- Network permission for downloading Kali rootfs -->
     <uses-permission android:name="android.permission.INTERNET"/>
 
-    <!-- Minimum and target SDK -->
-    <uses-sdk
-        android:minSdk="24"
-        android:targetSdk="34"/>
-
 </manifest>

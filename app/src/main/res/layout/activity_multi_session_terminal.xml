@@ -91,7 +91,6 @@
             android:layout_weight="1"
             android:background="#2A2A3E"
             android:hint="kali-mobile:~$ "
-            android:hintColor="#888888"
             android:imeOptions="actionSend"
             android:inputType="text"
             android:maxLines="1"

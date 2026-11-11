@@ -3,6 +3,7 @@ package com.kali.mobile
 import android.os.Bundle
 import android.os.Handler
 import android.os.Looper
+import android.text.Editable
 import android.util.Log
 import android.view.View
 import android.widget.Button
@@ -117,7 +118,7 @@ class PythonActivity : AppCompatActivity() {
                     statusText.setTextColor(ContextCompat.getColor(this@PythonActivity, android.R.color.holo_green_light))
                     appendOutput("✓ Python 3 is available in Kali environment\n", isError = false)
                     // Try to get version
-                    val version = aptManager.runKaliCommand("python3 --version")
+                    val version = kaliManager.executeCommand("python3 --version") ?: ""
                     appendOutput("Version: $version\n", isError = false)
                 } else {
                     statusText.text = "Python 3: Not installed"
@@ -154,8 +155,8 @@ print("Hello from KALI MOBILE")
 print("Python 3 running in rootless Kali Linux ARM64")
 """.trimIndent()
 
-            pythonCodeEdit.text = defaultCode
-            scriptPathEdit.text = fileName
+            pythonCodeEdit.setText(defaultCode)
+            scriptPathEdit.setText(fileName)
             Toast.makeText(this, "Python file ready: $fileName", Toast.LENGTH_SHORT).show()
         }
 

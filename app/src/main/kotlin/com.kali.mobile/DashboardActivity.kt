@@ -145,8 +145,9 @@ class DashboardActivity : AppCompatActivity() {
             if (isInitialized) android.graphics.Color.parseColor("#32CD32")
             else android.graphics.Color.parseColor("#888888")
         )
-        kaliStatusDot.backgroundColor = android.graphics.Color.parseColor(
-            if (isInitialized) "#32CD32" else "#FF5555"
+        kaliStatusDot.setBackgroundColor(
+            if (isInitialized) android.graphics.Color.parseColor("#32CD32")
+            else android.graphics.Color.parseColor("#FF5555")
         )
 
         // Storage info
@@ -229,7 +230,7 @@ class DashboardActivity : AppCompatActivity() {
         val names = tools.map { it.first }
         AlertDialog.Builder(this)
             .setTitle("Quick Tools")
-            .setItems(names) { _, which ->
+            .setItems(names.toTypedArray()) { _, which ->
                 val (_, cmd) = tools[which]
                 runQuickTool(cmd)
             }

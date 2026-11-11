@@ -38,9 +38,9 @@ class FileManagerActivity : AppCompatActivity() {
     private var currentDir: File = File(filesDir, "kali_home")
 
     // Request codes for dialog results
-    private const val RC_CREATE_FOLDER = 1001
-    private const val RC_CREATE_FILE = 1002
-    private const val RC_RENAME = 1003
+    private val RC_CREATE_FOLDER = 1001
+    private val RC_CREATE_FILE = 1002
+    private val RC_RENAME = 1003
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -137,7 +137,7 @@ class FileManagerActivity : AppCompatActivity() {
         editText.typeface = android.graphics.Typeface.MONOSPACE
         editText.setMinLines(10)
         editText.setMaxLines(20)
-        editText.horizontalScrollBarEnabled = true
+        editText.setHorizontallyScrolling(true)
 
         builder.setView(editText)
 

@@ -38,7 +38,7 @@ class KaliManager(private val context: Context) {
 
     // PRoot base directory within app private storage
     val baseDir: File
-        get = context.getDir("kali_root", Context.MODE_PRIVATE)
+        get() = context.getDir("kali_root", Context.MODE_PRIVATE)
 
     /**
      * Gets the path to the Kali root filesystem directory.
@@ -68,7 +68,7 @@ class KaliManager(private val context: Context) {
         val prootPath = getProotPath()
         if (prootPath.isEmpty()) return false
         val prootFile = File(prootPath)
-        return prootFile.exists() && prootFile.canExecute
+        return prootFile.exists() && prootFile.canExecute()
     }
 
     /**
@@ -178,7 +178,7 @@ class KaliManager(private val context: Context) {
         val prootPath = getProotPath()
         if (prootPath.isNotEmpty()) {
             val existing = File(prootPath)
-            if (existing.exists() && existing.canExecute) {
+            if (existing.exists() && existing.canExecute()) {
                 Log.d("KaliManager", "PRoot binary already exists: $prootPath")
                 return existing
             }
@@ -301,7 +301,7 @@ class KaliManager(private val context: Context) {
             val connection = url.openConnection()
             connection.connectTimeout = 30000
             connection.readTimeout = 60000
-            val totalLength = connection.contentLength
+            val totalLength = connection.contentLength.toLong()
 
             input = connection.inputStream
             output = destFile.outputStream()
@@ -395,7 +395,7 @@ class KaliManager(private val context: Context) {
      * Set up the PRoot environment configuration.
      * Creates wrapper scripts for running Kali commands.
      */
-    private fun setupProotEnvironment(rootfsDir: File, prootBinary: File) {
+    private fun setupProotEnvironment(rootfsDir: File, prootFile: File) {
         val rootPath = rootfsDir.absolutePath
 
         // Create a wrapper script to launch Kali Linux via PRoot

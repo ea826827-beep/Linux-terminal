@@ -55,7 +55,7 @@ class TerminalSession(val sessionId: String, var sessionName: String) {
             // Read error stream in background to avoid buffer blocking
             Thread {
                 try {
-                    errorReader!!.bufferedReader().useLines { lines ->
+                    errorReader!!.useLines { lines ->
                         lines.forEach { line ->
                             Log.e("TerminalSession", "Session $sessionId stderr: $line")
                         }
@@ -69,7 +69,7 @@ class TerminalSession(val sessionId: String, var sessionName: String) {
             Thread {
                 try {
                     Thread.sleep(500)
-                    reader!!.bufferedReader().useLines { lines ->
+                    reader!!.useLines { lines ->
                         lines.forEach { line ->
                             Log.d("TerminalSession", "Session $sessionId init: $line")
                         }
