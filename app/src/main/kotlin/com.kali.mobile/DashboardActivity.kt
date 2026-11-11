@@ -136,48 +136,66 @@ class DashboardActivity : AppCompatActivity() {
 
     /**
      * Update dashboard information from KaliManager.
+     * Wrapped in try/catch so the app never crashes on open,
+     * even if Kali is not installed yet.
      */
     private fun updateDashboardInfo() {
-        // Kali status
-        val isInitialized = kaliManager.isEnvironmentInitialized()
-        kaliStatusText.text = if (isInitialized) "Installed" else "Not installed"
-        kaliStatusText.setTextColor(
-            if (isInitialized) android.graphics.Color.parseColor("#32CD32")
-            else android.graphics.Color.parseColor("#888888")
-        )
-        kaliStatusDot.setBackgroundColor(
-            if (isInitialized) android.graphics.Color.parseColor("#32CD32")
-            else android.graphics.Color.parseColor("#FF5555")
-        )
+        try {
+            // Kali status
+            val isInitialized = kaliManager.isEnvironmentInitialized()
+            kaliStatusText.text = if (isInitialized) "Installed" else "Not installed"
+            kaliStatusText.setTextColor(
+                if (isInitialized) android.graphics.Color.parseColor("#32CD32")
+                else android.graphics.Color.parseColor("#888888")
+            )
+            kaliStatusDot.setBackgroundColor(
+                if (isInitialized) android.graphics.Color.parseColor("#32CD32")
+                else android.graphics.Color.parseColor("#FF5555")
+            )
 
-        // Storage info
-        val availableSpace = kaliManager.getAvailableSpace()
-        val availableGB = availableSpace / (1024 * 1024 * 1024)
-        storageText.text = "${availableGB} GB available"
+            // Storage info
+            val availableSpace = kaliManager.getAvailableSpace()
+            val availableGB = availableSpace / (1024L * 1024L * 1024L)
+            storageText.text = "${availableGB} GB available"
 
-        // Architecture
-        val arch = android.os.Build.CPU_ABI
-        archText.text = arch
+            // Architecture
+            val arch = android.os.Build.SUPPORTED_ABIS.firstOrNull() ?: "unknown"
+            archText.text = arch
 
-        // Environment status
-        val prootAvailable = kaliManager.isProotAvailable()
-        envStatusText.text = if (isInitialized && prootAvailable) "Ready" else "Not ready"
-        envStatusText.setTextColor(
-            if (isInitialized && prootAvailable) android.graphics.Color.parseColor("#32CD32")
-            else android.graphics.Color.parseColor("#FF5555")
-        )
+            // Environment status
+            val prootAvailable = kaliManager.isProotAvailable()
+            envStatusText.text = if (isInitialized && prootAvailable) "Ready" else "Not ready"
+            envStatusText.setTextColor(
+                if (isInitialized && prootAvailable) android.graphics.Color.parseColor("#32CD32")
+                else android.graphics.Color.parseColor("#FF5555")
+            )
 
-        // Package count - try to get from Kali if installed
-        if (isInitialized && prootAvailable) {
-            Thread {
-                val pkgOutput = kaliManager.executeCommand("dpkg -l 2>/dev/null | grep -c '^ii'")
-                handler.post {
-                    val count = pkgOutput?.trim()?.toIntOrNull() ?: 0
-                    packageCountText.text = "$count packages"
-                }
-            }.start()
-        } else {
-            packageCountText.text = "0 packages"
+            // Package count - try to get from Kali if installed
+            if (isInitialized && prootAvailable) {
+                Thread {
+                    try {
+                        val pkgOutput = kaliManager.executeCommand("dpkg -l 2>/dev/null | grep -c '^ii'")
+                        handler.post {
+                            val count = pkgOutput?.trim()?.toIntOrNull() ?: 0
+                            packageCountText.text = "$count packages"
+                        }
+                    } catch (e: Exception) {
+                        Log.e("DashboardActivity", "Error counting packages", e)
+                    }
+                }.start()
+            } else {
+                packageCountText.text = "0 packages"
+            }
+        } catch (e: Exception) {
+            Log.e("DashboardActivity", "Error updating dashboard info", e)
+            // Fallback UI so the dashboard never shows blank on error
+            try {
+                kaliStatusText.text = "Unknown"
+                envStatusText.text = "Not ready"
+                packageCountText.text = "0 packages"
+            } catch (ignored: Exception) {
+                // Views may not be ready yet; nothing else to do
+            }
         }
     }
 
