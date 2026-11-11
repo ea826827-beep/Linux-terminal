@@ -1,7 +1,7 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
 
     <!-- Base Theme -->
-    <style name="Theme.KaliMobile" parent="Theme.AppCompat.Light.NoActionBar">
+    <style name="Theme.KaliMobile" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <item name="colorPrimary">#00FFEF</item>
         <item name="colorPrimaryDark">#00BFFF</item>
         <item name="colorAccent">#00FFEF</item>
@@ -11,7 +11,7 @@
     </style>
 
     <!-- Dark Theme for Terminal and Tools -->
-    <style name="Theme.KaliMobile.Dark" parent="Theme.AppCompat.NoActionBar">
+    <style name="Theme.KaliMobile.Dark" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <item name="colorPrimary">#00FFEF</item>
         <item name="colorPrimaryDark">#00BFFF</item>
         <item name="colorAccent">#00FFEF</item>
@@ -21,7 +21,7 @@
     </style>
 
     <!-- Settings Theme -->
-    <style name="Theme.KaliMobile.Settings" parent="Theme.AppCompat.NoActionBar">
+    <style name="Theme.KaliMobile.Settings" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <item name="colorPrimary">#00FFEF</item>
         <item name="colorPrimaryDark">#00BFFF</item>
         <item name="colorAccent">#00FFEF</item>
